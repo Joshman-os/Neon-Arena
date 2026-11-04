@@ -1,0 +1,91 @@
+:root {
+  --bg: #0a0a1a;
+  --neon-blue: #3b82f6;
+  --neon-red: #ff3355;
+  --neon-green: #39ff88;
+  --neon-yellow: #ffd23f;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg);
+  color: #fff;
+  font-family: "Courier New", monospace;
+  overflow: hidden;
+  user-select: none;
+}
+
+.app { width: 100vw; height: 100vh; position: relative; }
+
+.screen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  text-align: center;
+  padding: 2rem;
+}
+
+.title {
+  font-size: clamp(3rem, 10vw, 8rem);
+  margin: 0;
+  color: var(--neon-blue);
+  text-shadow: 0 0 20px var(--neon-blue), 0 0 50px var(--neon-blue);
+  letter-spacing: 0.15em;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.title.danger {
+  color: var(--neon-red);
+  text-shadow: 0 0 20px var(--neon-red), 0 0 50px var(--neon-red);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.big-text { font-size: clamp(1.5rem, 3.5vw, 2.8rem); margin: 0; }
+.highlight { color: var(--neon-yellow); }
+.hint { font-size: clamp(1rem, 2vw, 1.6rem); color: #9aa; line-height: 1.8; }
+
+.btn {
+  font-family: inherit;
+  font-size: clamp(1.5rem, 3.5vw, 2.8rem);
+  padding: 1rem 3rem;
+  background: transparent;
+  color: #fff;
+  border: 4px solid var(--neon-green);
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 0 15px var(--neon-green);
+  transition: transform 0.1s, background 0.1s;
+}
+.btn:hover, .btn:focus-visible { background: var(--neon-green); color: #000; transform: scale(1.06); outline: none; }
+.btn.secondary { border-color: var(--neon-blue); box-shadow: 0 0 15px var(--neon-blue); }
+.btn.secondary:hover, .btn.secondary:focus-visible { background: var(--neon-blue); }
+
+.row { display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; }
+
+/* Pelinäkymä */
+.game-wrapper { position: relative; width: 100%; height: 100%; }
+.game-canvas { width: 100%; height: 100%; }
+
+.hud {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  font-size: clamp(1.2rem, 2.6vw, 2.2rem);
+  pointer-events: none;
+  text-shadow: 0 0 8px #000;
+}
+.hearts { color: var(--neon-red); letter-spacing: 0.2em; }
